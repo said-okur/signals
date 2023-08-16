@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/14 18:12:26 by sokur             #+#    #+#             */
-/*   Updated: 2023/08/15 20:36:20 by sokur            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minitalk.h"
 #include <stdio.h>
-
 
 void	ft_handle(int sig, siginfo_t *info, void *context)
 {
@@ -35,18 +22,17 @@ void	ft_handle(int sig, siginfo_t *info, void *context)
 	}
 }
 
-
 int	main(void)
 {
 	struct sigaction	act;
-	int	pid;
+	int					pid;
 
 	pid = getpid();
 	write(1, "Server PID: ", 12);
 	ft_putnbr(pid);
 	write(1, "\n", 1);
 	act.sa_sigaction = ft_handle;
-	act.sa_flags = 0;
+	act.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
 	while (1)

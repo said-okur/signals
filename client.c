@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sokur <sokur@student.42kocaeli.com.tr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/14 17:41:20 by sokur             #+#    #+#             */
-/*   Updated: 2023/08/15 20:36:30 by sokur            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minitalk.h"
 
 static	void	received_signal(int sig)
@@ -17,6 +5,7 @@ static	void	received_signal(int sig)
 	if (sig == SIGUSR1)
 		write(1, "Signal Received\n", 16);
 }
+
 void	ft_sendbit(int pid, char c)
 {
 	int	bit;
